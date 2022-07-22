@@ -22,6 +22,7 @@ and creating files from data is time-consuming tasks and is best done it in Work
 ## Testing
 
 **Creating Map structure**
+
 ![](readmeAssets/buildingData.jpg)
 
 Well, as expected, the most performant option for creating a new data structure is an array with keys as a string, but
@@ -31,7 +32,9 @@ they did not come true.
 Anyway string id labels with object values have a little slower time and clean data manipulating
 
 **Sorting**
+
 ![](readmeAssets/iterating.jpg)
+
 -_-
 
 Iterating over array of arrays have better result. Closures are pretty interesting, but iterating over objects is still
