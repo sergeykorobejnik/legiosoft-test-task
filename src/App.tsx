@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Box, Flex} from "@chakra-ui/react";
+import ToolBar from "./components/ToolBar/ToolBar";
+import TransactionsContainer from "./components/TransactionsContainer/TransactionsContainer";
+import AlertMessage from "./components/AlertMessage/AlertMessage";
+import {useEffect} from "react";
+import {useAppDispatch} from "./redux";
+import {setLoadingStart} from "./redux/uiReducer";
+import EditTransactionModal from "./components/EditTransactionModal/EditTransactionModal";
+import DeleteTransactionModal from "./components/DeleteTransactionModal/DeleteTransactionModal";
+import Pagination from "./components/Pagination/Pagination";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(setLoadingStart())
+    })
+    return (
+        <Box w="100%" h="100vh" bg="rgba(0, 0, 0, 0.2)" padding="2" >
+            <ToolBar/>
+            <TransactionsContainer/>
+            <Pagination/>
+            <EditTransactionModal/>
+            <DeleteTransactionModal/>
+            <AlertMessage/>
+        </Box>
+);
 }
 
 export default App;

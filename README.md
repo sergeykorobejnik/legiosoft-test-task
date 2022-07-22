@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+## Realization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application uses the built-in implementation of hash maps (Map object) that providing necessary functionality.
+Small ui tricks like ... in pagination and loaders skipped but have implementation in redux store. It also provides
+template for the implementation of the download progress through the adding callback in _buildTransactions.ts_
 
-## Available Scripts
+## Some unnecessary research
 
-In the project directory, you can run:
+Fun fact, javascript objects are also a kind of hash table.
 
-### `yarn start`
+To start. Hash tables do not completely solve the problem of iterating over large amounts of data. Since the application
+has sorting by field. In any case, you will need to iterate the array to find the desired fields
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+So I created a function to generate a large chunk of data and tested different data structures on a 3e6 amount of raw
+arrays. Compared the time to create an Map object and sort with different keys and values
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Anyway, the implementation in this test case is not well suited for large amounts of data, because sorting, building,
+and creating files from data is time-consuming tasks and is best done it in Worker
 
-### `yarn test`
+![example of function that creating chunk of arrays](readmeAssets/createChunk.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Testing
 
-### `yarn build`
+**Creating Map structure**
+![](readmeAssets/buildingData.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Well, as expected, the most performant option for creating a new data structure is an array with keys as a string, but
+this option is the worst option for changing data in application. I had high expectations from the Set collections, but
+they did not come true.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Anyway string id labels with object values have a little slower time and clean data manipulating
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Sorting**
+![](readmeAssets/iterating.jpg)
+-_-
 
-### `yarn eject`
+Iterating over array of arrays have better result. Closures are pretty interesting, but iterating over objects is still
+fast enough. And Set keys disappointing me. Set variant similar to objects theoretically should get a better result
+close to (O)1 searching for the necessary string, but it doesn't
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Conclusion
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Map with object values have better time and static interface for each transaction item. Application uses this
+realization
