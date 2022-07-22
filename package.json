@@ -2,7 +2,7 @@
   "name": "legiosoft-test-task",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https:// sergeykorobejnik.github.io",
+  "homepage": "https://sergeykorobejnik.github.io/legiosoft-test-task/",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.4",
     "@chakra-ui/react": "^2.2.4",
