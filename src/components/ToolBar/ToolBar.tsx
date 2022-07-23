@@ -55,9 +55,16 @@ const ToolBar: FC = () => {
         <Flex
             align="center"
             justify="space-between"
-            padding="5"
+            padding={{
+                base: 1,
+                md: 5
+            }}
+            mb={{
+                base: 5,
+                md: 0
+            }}
         >
-            <Flex gap="5">
+            <Flex gap={{base: 2, md: 5}}>
                 <SortMenu
                     sortingType="status"
                     label="Status"
@@ -69,7 +76,7 @@ const ToolBar: FC = () => {
                     menuItems={TypeSorting}
                 />
             </Flex>
-            <Flex gap="5">
+            <Flex gap={{base: 2, md: 5}}>
                 <Button onClick={openFileDialogue}>
                     Import
                 </Button>

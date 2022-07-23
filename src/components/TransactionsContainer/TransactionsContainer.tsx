@@ -16,7 +16,7 @@ const TransactionsContainer: FC = props => {
             direction="column"
         >
             <TableContainer>
-                <Table>
+                <Table variant="simple">
                     <Thead>
                         <Tr>
                             <Th>Transaction id</Th>

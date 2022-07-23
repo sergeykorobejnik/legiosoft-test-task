@@ -48,4 +48,5 @@ function* watchSorting () {
 export function* workerUser () {
     yield takeEvery(uiActionTypes.setLoadingStart, fetchTransactions)
     yield takeEvery(userActionTypes.setSorting, watchSorting)
+    yield takeEvery(userActionTypes.setTransactions, watchSorting)
 }

@@ -36,8 +36,20 @@ const TransactionAction: FC<Props> = ({transaction, children}) => {
             {children}
             <Td>
                 <Grid templateColumns="repeat(2, 1fr)" gap="2">
-                    <Button onClick={handleEdit}>Edit</Button>
-                    <Button onClick={handleDelete}>Delete</Button>
+                    <Button
+                        onClick={handleEdit}
+                        fontSize={{
+                            base: 12,
+                            md: 16
+                        }}
+                    >Edit</Button>
+                    <Button
+                        onClick={handleDelete}
+                        fontSize={{
+                            base: 12,
+                            md: 16
+                        }}
+                    >Delete</Button>
                 </Grid>
             </Td>
         </>
